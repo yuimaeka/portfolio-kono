@@ -51,7 +51,7 @@ class ArticlesTable extends Table
         $this->hasMany('Pictures', [
             'foreignKey' => 'article_id',
         ]);
-        $this->hasMany('Thumbnails', [
+        $this->hasOne('Thumbnails', [
             'foreignKey' => 'article_id',
         ]);
     }

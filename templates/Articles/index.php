@@ -9,20 +9,11 @@
     <h3><?= __('Articles') ?></h3>
     <div class="table-responsive">
         <table>
-            <thead>
-                <tr>
-                    <th><?= $this->Paginator->sort('id') ?></th>
-                    <th><?= $this->Paginator->sort('created') ?></th>
-                    <th><?= $this->Paginator->sort('modified') ?></th>
-                    <th><?= $this->Paginator->sort('explanation') ?></th>
-                    <th><?= $this->Paginator->sort('picture_created') ?></th>
-                    <th class="actions"><?= __('Actions') ?></th>
-                </tr>
-            </thead>
             <tbody>
                 <?php foreach ($articles as $article): ?>
                 <tr>
                     <td><?= $this->Number->format($article->id) ?></td>
+                    <?= $this->Html->image("thumbnails_img/".$article->thumbnail->path) ?>
                     <td><?= h($article->created) ?></td>
                     <td><?= h($article->modified) ?></td>
                     <td><?= h($article->explanation) ?></td>
@@ -36,15 +27,5 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
-    </div>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
-        <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
     </div>
 </div>

@@ -18,7 +18,12 @@ class ArticlesController extends AppController
      */
     public function index()
     {
-        $articles = $this->paginate($this->Articles);
+        $articles = $this->Articles->find('all',[
+            'contain'=>[
+                'Pictures',
+                'Thumbnails',
+            ]
+        ])??[];
 
         $this->set(compact('articles'));
     }
